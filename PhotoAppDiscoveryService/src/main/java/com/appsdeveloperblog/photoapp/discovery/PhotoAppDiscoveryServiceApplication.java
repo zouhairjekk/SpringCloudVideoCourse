@@ -8,8 +8,8 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 @EnableEurekaServer
 public class PhotoAppDiscoveryServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PhotoAppDiscoveryServiceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(PhotoAppDiscoveryServiceApplication.class, args);
+    }
 
 }

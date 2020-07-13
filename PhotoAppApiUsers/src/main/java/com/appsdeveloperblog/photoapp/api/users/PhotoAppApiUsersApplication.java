@@ -21,14 +21,11 @@ import org.springframework.web.client.RestTemplate;
 @EnableCircuitBreaker
 public class PhotoAppApiUsersApplication {
     public static final String MYAPPLICATION_ENVIRONMENT = "myapplication.environment";
+    org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
     private Environment environment;
-
     private final String MY_APPLICATION_ENVIRONMENT = "Development bean created. myapplication.environment = " + environment.getProperty(MYAPPLICATION_ENVIRONMENT);
     public final String NOT_PRODUCTION_BEAN_CREATED_MYAPPLICATION_ENVIRONMENT = "Not Production bean created. myapplication.environment = " + environment.getProperty(MYAPPLICATION_ENVIRONMENT);
     public final String PRODUCTION_BEAN_CREATED_MYAPPLICATION_ENVIRONMENT = "Production bean created. myapplication.environment = " + environment.getProperty(MYAPPLICATION_ENVIRONMENT);
-
-
-    org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     public PhotoAppApiUsersApplication(Environment environment) {

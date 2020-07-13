@@ -1,80 +1,80 @@
 package com.appsdeveloperblog.photoapp.api.users.shared;
 
+import com.appsdeveloperblog.photoapp.api.users.ui.model.AlbumResponseModel;
+
 import java.io.Serializable;
 import java.util.List;
 
-import com.appsdeveloperblog.photoapp.api.users.ui.model.AlbumResponseModel;
-
 public class UserDto implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -953297098295050686L;
-	
-	private String firstName;
-	private String lastName;
-	private String email;
-	private String password;
-	private String userId;
-	private String encryptedPassword;
+    /**
+     *
+     */
+    private static final long serialVersionUID = -953297098295050686L;
 
-	transient private List<AlbumResponseModel> albums;
-	
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String password;
+    private String userId;
+    private String encryptedPassword;
 
-	public String getFirstName() {
-		return firstName;
-	}
+    transient private List<AlbumResponseModel> albums;
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getUserId() {
-		return userId;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getEncryptedPassword() {
-		return encryptedPassword;
-	}
+    public String getUserId() {
+        return userId;
+    }
 
-	public void setEncryptedPassword(String encryptedPassword) {
-		this.encryptedPassword = encryptedPassword;
-	}
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-	public List<AlbumResponseModel> getAlbums() {
-		return albums;
-	}
+    public String getEncryptedPassword() {
+        return encryptedPassword;
+    }
 
-	public void setAlbums(List<AlbumResponseModel> albums) {
-		this.albums = albums;
-	}
+    public void setEncryptedPassword(String encryptedPassword) {
+        this.encryptedPassword = encryptedPassword;
+    }
+
+    public List<AlbumResponseModel> getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(List<AlbumResponseModel> albums) {
+        this.albums = albums;
+    }
 
 }
