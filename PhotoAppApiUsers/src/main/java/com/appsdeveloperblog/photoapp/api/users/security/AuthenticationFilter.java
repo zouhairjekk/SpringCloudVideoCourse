@@ -3,12 +3,15 @@ package com.appsdeveloperblog.photoapp.api.users.security;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -27,9 +30,10 @@ import io.jsonwebtoken.SignatureAlgorithm;
 
 public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-	private UsersService usersService;
-	private Environment environment;
-	
+	private final UsersService usersService;
+	private final Environment environment;
+
+	Logger loger = LoggerFactory.getLogger(this.getClass());
 	public AuthenticationFilter(UsersService usersService, 
 			Environment environment, 
 			AuthenticationManager authenticationManager) {
@@ -54,8 +58,9 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
             );
             
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            loger.error(e.getMessage());
         }
+        return null;
     }
     
     @Override
@@ -68,7 +73,7 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     	
         String token = Jwts.builder()
                 .setSubject(userDetails.getUserId())
-                .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(environment.getProperty("token.expiration_time"))))
+                .setExpiration(new Date(System.currentTimeMillis() + Long.parseLong(Objects.requireNonNull(environment.getProperty("token.expiration_time")))))
                 .signWith(SignatureAlgorithm.HS512, environment.getProperty("token.secret") )
                 .compact();
         

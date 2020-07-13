@@ -24,8 +24,7 @@ public class FeignErrorDecoder implements ErrorDecoder {
 	public Exception decode(String methodKey, Response response) {
 		switch (response.status()) {
 		case 400:
-			// Do something
-			// return new BadRequestException();
+			//TODO
 			break;
 		case 404: {
 			if (methodKey.contains("getAlbums")) {

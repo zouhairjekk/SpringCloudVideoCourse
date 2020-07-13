@@ -2,6 +2,7 @@ package com.appsdeveloperblog.photoapp.api.gateway.security;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -33,7 +34,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
 
         String authorizationHeader = req.getHeader(environment.getProperty("authorization.token.header.name"));
 
-        if (authorizationHeader == null || !authorizationHeader.startsWith(environment.getProperty("authorization.token.header.prefix"))) {
+        if (authorizationHeader == null || !authorizationHeader.startsWith(Objects.requireNonNull(environment.getProperty("authorization.token.header.prefix")))) {
             chain.doFilter(req, res);
             return;
         }
@@ -51,7 +52,7 @@ public class AuthorizationFilter extends BasicAuthenticationFilter {
              return null;
          }
 
-         String token = authorizationHeader.replace(environment.getProperty("authorization.token.header.prefix"), "");
+         String token = authorizationHeader.replace(Objects.requireNonNull(environment.getProperty("authorization.token.header.prefix")), "");
 
          String userId = Jwts.parser()
                  .setSigningKey(environment.getProperty("token.secret"))

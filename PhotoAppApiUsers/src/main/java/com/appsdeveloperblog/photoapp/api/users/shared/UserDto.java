@@ -17,7 +17,8 @@ public class UserDto implements Serializable {
 	private String password;
 	private String userId;
 	private String encryptedPassword;
-	private List<AlbumResponseModel> albums;
+
+	transient private List<AlbumResponseModel> albums;
 	
 
 	public String getFirstName() {

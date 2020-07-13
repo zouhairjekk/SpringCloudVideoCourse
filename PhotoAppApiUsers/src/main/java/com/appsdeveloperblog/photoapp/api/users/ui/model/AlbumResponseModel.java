@@ -1,6 +1,8 @@
 package com.appsdeveloperblog.photoapp.api.users.ui.model;
 
-public class AlbumResponseModel {
+import java.io.Serializable;
+
+public class AlbumResponseModel implements Serializable {
 
     private String albumId;
     private String userId; 

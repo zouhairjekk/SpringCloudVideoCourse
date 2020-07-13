@@ -16,9 +16,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
 	
-	private Environment environment;
-	private UsersService usersService;
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	private final Environment environment;
+	private final UsersService usersService;
+	private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Autowired
 	public WebSecurity(Environment environment, UsersService usersService, BCryptPasswordEncoder bCryptPasswordEncoder)
@@ -40,7 +40,6 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 	private AuthenticationFilter getAuthenticationFilter() throws Exception
 	{
 		AuthenticationFilter authenticationFilter = new AuthenticationFilter(usersService, environment, authenticationManager());
-		//authenticationFilter.setAuthenticationManager(authenticationManager()); 
 		authenticationFilter.setFilterProcessesUrl(environment.getProperty("login.url.path"));
 		return authenticationFilter;
 	}

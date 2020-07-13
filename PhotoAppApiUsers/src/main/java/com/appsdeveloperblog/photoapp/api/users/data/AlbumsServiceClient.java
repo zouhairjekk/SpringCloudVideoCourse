@@ -27,7 +27,6 @@ class AlbumsFallbackFactory implements FallbackFactory<AlbumsServiceClient> {
 
 	@Override
 	public AlbumsServiceClient create(Throwable cause) {
-		// TODO Auto-generated method stub
 		return new AlbumsServiceClientFallback(cause);
 	}
 
@@ -45,13 +44,11 @@ class AlbumsServiceClientFallback implements AlbumsServiceClient {
 
 	@Override
 	public List<AlbumResponseModel> getAlbums(String id) {
-		// TODO Auto-generated method stub
 
 		if (cause instanceof FeignException && ((FeignException) cause).status() == 404) {
-			logger.error("404 error took place when getAlbums was called with userId: " + id + ". Error message: "
-					+ cause.getLocalizedMessage());
+			logger.error(new StringBuilder().append("404 error took place when getAlbums was called with userId: ").append(id).append(". Error message: ").append(cause.getLocalizedMessage()).toString());
 		} else {
-			logger.error("Other error took place: " + cause.getLocalizedMessage());
+			logger.error(new StringBuilder().append("Other error took place: ").append(cause.getLocalizedMessage()).toString());
 		}
 
 		return new ArrayList<>();

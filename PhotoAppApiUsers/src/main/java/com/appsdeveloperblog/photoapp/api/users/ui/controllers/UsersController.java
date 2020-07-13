@@ -25,11 +25,15 @@ import com.appsdeveloperblog.photoapp.api.users.shared.*;
 @RequestMapping("/users")
 public class UsersController {
 	
-	@Autowired
-	private Environment env;
+	private final Environment env;
 	
+	final UsersService usersService;
+
 	@Autowired
-	UsersService usersService;
+	public UsersController(Environment env, UsersService usersService) {
+		this.env = env;
+		this.usersService = usersService;
+	}
 
 	@GetMapping("/status/check")
 	public String status()
